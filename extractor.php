@@ -1,11 +1,9 @@
 <?php
 
-
-
 set_time_limit(3000);
 
-
-require '.env';
+include '.env.php';
+include 'extractor.config.php';
 
 
 $inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
