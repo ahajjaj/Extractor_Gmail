@@ -2,19 +2,18 @@
 
 set_time_limit(3000);
 
-include '.env.php';
+require_once '.env';
 include 'extractor.config.php';
 
 
-$inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
+$inbox = imap_open($ENV['HOSTNAME'],$ENV['USERNAME'],$ENV['PASSWORD']) or die('Cannot connect to Gmail: ' . imap_last_error());
 
 
 $emails = imap_search($inbox,'SUBJECT "jdma"');
 
 
-if($emails) {
 
-    $count = 1;
+if($emails) {
 
     rsort($emails);
 
@@ -97,11 +96,12 @@ if($emails) {
                 fwrite($fp, $attachment['attachment']);
                 fclose($fp);
             }
-            imap_mail_move($inbox, $i, '[Gmail]/Corbeille');
         }
 
         break;
     }
+    imap_mail_move($inbox, $i, '[Gmail]/Corbeille');
+
 }
 
 imap_close($inbox);
