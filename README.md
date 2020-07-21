@@ -9,3 +9,9 @@ L’identifiant de l’email (pour la suppression ultérieure)
 L’expéditeur (pour vérifier qu’il s’agit d’un email valide)
 
 Les pièces jointes (pour traitement et téléchargement vers l’espace de stockage)
+
+### Project installation
+
+1. Run `https://github.com/ahajjaj/Extractor_Gmail.git` to clone the repository into a new folder
+
+2. Run `composer install` to install the dependencies
